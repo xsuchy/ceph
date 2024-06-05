@@ -114,6 +114,7 @@ int ObjectDirectory::set(CacheObj* object, optional_yield y)
       return -ec.value();
     }
   } catch (std::exception &e) {
+    std::cout << "ObjectDirectory::set() ERROR:" << e.what() << std::endl;
     return -EINVAL;
   }
 
@@ -162,6 +163,7 @@ int ObjectDirectory::get(CacheObj* object, optional_yield y)
 	}
       }
     } catch (std::exception &e) {
+      std::cout << "ObjectDirectory::get() ERROR:" << e.what() << std::endl;
       return -EINVAL;
     }
   } else {
@@ -208,6 +210,7 @@ int ObjectDirectory::copy(CacheObj* object, std::string copyName, std::string co
 
       return std::get<0>(resp).value() - 1; 
     } catch (std::exception &e) {
+      std::cout << "ObjectDirectory::copy() ERROR:" << e.what() << std::endl;
       return -EINVAL;
     }
   } else {
@@ -234,6 +237,7 @@ int ObjectDirectory::del(CacheObj* object, optional_yield y)
 
       return std::get<0>(resp).value() - 1; 
     } catch (std::exception &e) {
+      std::cout << "ObjectDirectory::del() ERROR:" << e.what() << std::endl;
       return -EINVAL;
     }
   } else {
@@ -298,6 +302,7 @@ int ObjectDirectory::update_field(CacheObj* object, std::string field, std::stri
 	return std::get<0>(resp).value(); 
       }
     } catch (std::exception &e) {
+      std::cout << "ObjectDirectory::update_field() ERROR:" << e.what() << std::endl;
       return -EINVAL;
     }
   } else {
@@ -395,6 +400,7 @@ int BlockDirectory::set(CacheBlock* block, optional_yield y)
       return -ec.value();
     }
   } catch (std::exception &e) {
+    std::cout << "BlockDirectory::set() ERROR:" << e.what() << std::endl;
     return -EINVAL;
   }
 
@@ -466,6 +472,7 @@ int BlockDirectory::get(CacheBlock* block, optional_yield y)
 	}
       }
     } catch (std::exception &e) {
+      std::cout << "BlockDirectory::get() ERROR:" << e.what() << std::endl;
       return -EINVAL;
     }
   } else {
@@ -512,6 +519,7 @@ int BlockDirectory::copy(CacheBlock* block, std::string copyName, std::string co
 
       return std::get<0>(resp).value() - 1; 
     } catch (std::exception &e) {
+      std::cout << "BlockDirectory::copy() ERROR:" << e.what() << std::endl;
       return -EINVAL;
     }
   } else {
@@ -538,6 +546,7 @@ int BlockDirectory::del(CacheBlock* block, optional_yield y)
 
       return std::get<0>(resp).value() - 1; 
     } catch (std::exception &e) {
+      std::cout << "BlockDirectory::del() ERROR:" << e.what() << std::endl;
       return -EINVAL;
     }
   } else {
@@ -602,6 +611,7 @@ int BlockDirectory::update_field(CacheBlock* block, std::string field, std::stri
 	return std::get<0>(resp).value(); 
       }
     } catch (std::exception &e) {
+      std::cout << "BlockDirectory::update_field() ERROR:" << e.what() << std::endl;
       return -EINVAL;
     }
   } else {
@@ -676,6 +686,7 @@ int BlockDirectory::remove_host(CacheBlock* block, std::string delValue, optiona
 	return std::get<0>(resp).value();
       }
     } catch (std::exception &e) {
+      std::cout << "ObjectDirectory::remove_host() ERROR:" << e.what() << std::endl;
       return -EINVAL;
     }
   } else {
